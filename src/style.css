@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #f5f7f6;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background: #0b5d3b;
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav a {
+  color: white;
+  font-size: 15px;
+}
+
+/* Hero */
+.hero {
+  padding: 80px 6%;
+  text-align: center;
+  background: #f5f7f6;
+}
+
+.hero h1 {
+  color: #0b5d3b;
+  font-size: 46px;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 28px;
+  background: #0b5d3b;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Features */
+.features {
+  background: white;
+  padding: 60px 6%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 280px;
+  padding: 30px;
+  background: #f5f7f6;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.card h3 {
+  color: #0b5d3b;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Pricing */
+.pricing {
+  padding: 60px 6%;
+}
+
+.price-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.price-card {
+  width: 300px;
+  padding: 35px;
+  background: white;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.price-card h3 {
+  margin-bottom: 15px;
+}
+
+.price {
+  color: #0b5d3b;
+  font-size: 34px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+/* Footer */
+.footer {
+  background: #0b5d3b;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav {
+    gap: 15px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero {
+    padding: 60px 20px;
+  }
+}

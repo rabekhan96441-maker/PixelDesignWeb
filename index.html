@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pixel Design</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #FAF2F0;
+      color: #1E293B;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      z-index: 1000;
+    }
+
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      color: #1E3A5F;
+    }
+
+    .header-btn {
+      border: none;
+      background: #F3EEF5;
+      color: #1E3A5F;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .header-btn:hover {
+      background: #E2E8F0;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -310px;
+      width: 290px;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 2000;
+      box-shadow: 5px 0 25px rgba(0,0,0,0.12);
+      transition: 0.3s ease;
+      overflow-y: auto;
+      padding-bottom: 30px;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar-header {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .sidebar-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: #1E3A5F;
+    }
+
+    .close-sidebar {
+      border: none;
+      background: #F3EEF5;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .menu {
+      padding: 15px;
+    }
+
+    .menu button {
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 14px 13px;
+      margin-bottom: 5px;
+      border-radius: 11px;
+      text-align: left;
+      font-size: 15px;
+      color: #1E293B;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .menu button i {
+      width: 22px;
+      color: #0F766E;
+    }
+
+    .menu button:hover {
+      background: #F3EEF5;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 1500;
+      display: none;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    /* MAIN */
+    main {
+      padding-top: 64px;
+    }
+
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.05;
+      color: #1E3A5F;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 span {
+      color: #0F766E;
+    }
+
+    .hero-content p {
+      max-width: 600px;
+      font-size: 18px;
+      color: #64748B;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border: none;
+      padding: 13px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .primary-btn {
+      background: #0F766E;
+      color: white;
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #1E3A5F;
+      border: 1px solid #E2E8F0;
+    }
+
+    .primary-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* PHONE FRAME */
+    .phone-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phone {
+      width: 285px;
+      height: 570px;
+      background: #1E293B;
+      border: 9px solid #1E293B;
+      border-radius: 38px;
+      padding: 8px;
+      box-shadow: 0 25px 50px rgba(30, 41, 59, 0.25);
+      position: relative;
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 82px;
+      height: 20px;
+      background: #1E293B;
+      border-radius: 0 0 14px 14px;
+      z-index: 2;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: #F7FBF9;
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 24px 14px 14px;
+    }
+
+    .phone-top {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: #1E3A5F;
+      margin-bottom: 18px;
+    }
+
+    .phone-poster {
+      height: 280px;
+      border-radius: 16px;
+      background:
+        linear-gradient(
+          145deg,
+          #FAF2F0,
+          #F3EEF5
+        );
+      border: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .phone-poster-icon {
+      width: 65px;
+      height: 65px;
+      border-radius: 18px;
+      background: #0F766E;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 29px;
+      margin-bottom: 16px;
+    }
+
+    .phone-poster h3 {
+      color: #1E3A5F;
+      margin-bottom: 7px;
+    }
+
+    .phone-poster p {
+      color: #64748B;
+      font-size: 12px;
+    }
+
+    .phone-bottom {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .phone-box {
+      height: 55px;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0F766E;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 35px;
+      color: #1E3A5F;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #64748B;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: #F3EEF5;
+      color: #0F766E;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      color: #1E3A5F;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: #64748B;
+      font-size: 14px;
+    }
+
+    /* CALENDAR */
+    .calendar-card {
+      max-width: 430px;
+      margin: auto;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .calendar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .calendar-head h3 {
+      color: #1E3A5F;
+    }
+
+    .calendar-head button {
+      border: none;
+      background: #F3EEF5;
+      width: 35px;
+      height: 35px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .weekdays,
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      text-align: center;
+    }
+
+    .weekdays div {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748B;
+      padding: 5px;
+    }
+
+    .days div {
+      padding: 9px 4px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .days div:hover {
+      background: #F3EEF5;
+    }
+
+    .days .today {
+      background: #0F766E;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* DOWNLOAD */
+    .download-box {
+      background: #1E3A5F;
+      color: white;
+      border-radius: 24px;
+      padding: 45px 25px;
+      text-align: center;
+    }
+
+    .download-box h2 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .download-box p {
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
+
+    .download-btn {
+      background: white;
+      color: #1E3A5F;
+      border: none;
+      padding: 14px 23px;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* SCREENSHOTS */
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .screenshot {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .screenshot img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+    }
+
+    /* FAQ */
+    .faq {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: none;
+      background: white;
+      padding: 18px;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #1E3A5F;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 18px 18px;
+      color: #64748B;
+      font-size: 14px;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1E293B;
+      color: white;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 13px;
+      margin: 18px 0;
+    }
+
+    .social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+
+    .copyright {
+      font-size: 13px;
+      opacity: 0.65;
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: white;
+      width: min(500px, 100%);
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 20px;
+      padding: 25px;
+      position: relative;
+    }
+
+    .modal-box h2 {
+      color: #1E3A5F;
+      margin-bottom: 12px;
+    }
+
+    .modal-box p {
+      color: #64748B;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      border: none;
+      background: #F3EEF5;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .layer-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .layer-item {
+      padding: 14px;
+      background: #F7FBF9;
+      border: 1px solid #E2E8F0;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .layer-item i {
+      color: #0F766E;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .screenshots {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 55px 15px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 50px;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .screenshots {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .phone {
+        width: 265px;
+        height: 535px;
+      }
+
+      .section-title h2 {
+        font-size: 29px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+      <div class="sidebar-title">Layers</div>
+
+      <button class="close-sidebar" id="closeSidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="menu">
+
+      <button onclick="goTo('frame')">
+        <i class="fa-solid fa-mobile-screen"></i>
+        Mobile Frame
+      </button>
+
+      <button onclick="goTo('features')">
+        <i class="fa-solid fa-star"></i>
+        Features
+      </button>
+
+      <button onclick="goTo('homeCalendar')">
+        <i class="fa-solid fa-calendar-days"></i>
+        Calendar
+      </button>
+
+      <button onclick="goTo('download')">
+        <i class="fa-solid fa-download"></i>
+        Download
+      </button>
+
+      <button onclick="goTo('screenshots')">
+        <i class="fa-solid fa-images"></i>
+        Screenshots
+      </button>
+
+      <button onclick="goTo('faq')">
+        <i class="fa-solid fa-circle-question"></i>
+        FAQ
+      </button>
+
+      <button onclick="openModal('contactModal')">
+        <i class="fa-solid fa-envelope"></i>
+        Contact Us
+      </button>
+
+      <button onclick="openModal('privacyModal')">
+        <i class="fa-solid fa-shield-halved"></i>
+        Privacy Policy
+      </button>
+
+      <button onclick="openModal('layersModal')">
+        <i class="fa-solid fa-layer-group"></i>
+        Layers
+      </button>
+
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="header-left">
+      <button class="header-btn" id="openSidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="logo">Pixel Design</div>
+    </div>
+
+    <div class="header-right">
+      <button class="header-btn" onclick="goTo('home')">
+        <i class="fa-solid fa-house"></i>
+      </button>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <h1>
+          Create.
+          <span>Design.</span>
+          Share.
+        </h1>
+
+        <p>
+          Pixel Design helps you create beautiful graphics,
+          posters, social media posts and creative designs
+          with a simple and powerful design experience.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#download" class="primary-btn">
+            <i class="fa-solid fa-download"></i>
+            Download App
+          </a>
+
+          <a href="#frame" class="secondary-btn">
+            <i class="fa-solid fa-mobile-screen"></i>
+            View App
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- MOBILE FRAME -->
+      <div class="phone-area" id="frame">
+
+        <div class="phone">
+
+          <div class="phone-screen">
+
+            <div class="phone-top">
+              Pixel Design
+            </div>
+
+            <div class="phone-poster">
+
+              <div class="phone-poster-icon">
+                <i class="fa-solid fa-palette"></i>
+              </div>
+
+              <h3>Create Beautiful Designs</h3>
+
+              <p>
+                Design posters, posts and creative graphics
+                with Pixel Design.
+              </p>
+
+            </div>
+
+            <div class="phone-bottom">
+
+              <div class="phone-box">
+                <i class="fa-solid fa-image"></i>
+              </div>
+
+              <div class="phone-box">
+                <i class="fa-solid fa-font"></i>
+              </div>
+
+              <div class="phone-box">
+                <i class="fa-solid fa-shapes"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CALENDAR -->
+    <section id="homeCalendar">
+
+      <div class="section-title">
+        <h2>Calendar</h2>
+        <p>Keep track of your creative schedule.</p>
+      </div>
+
+      <div class="calendar-card">
+
+        <div class="calendar-head">
+
+          <button onclick="changeMonth(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <h3 id="monthYear"></h3>
+
+          <button onclick="changeMonth(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+        </div>
+
+        <div class="weekdays">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+
+        <div class="days" id="calendarDays"></div>
+
+      </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+
+      <div class="section-title">
+        <h2>Features</h2>
+        <p>Everything you need for creative designs.</p>
+      </div>
+
+      <div class="features">
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+
+          <h3>Creative Design</h3>
+
+          <p>
+            Create attractive graphics and creative
+            designs easily.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-image"></i>
+          </div>
+
+          <h3>Image Support</h3>
+
+          <p>
+            Use images to make your designs more
+            attractive.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+
+          <h3>Share</h3>
+
+          <p>
+            Share your finished designs with others.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-mobile-screen"></i>
+          </div>
+
+          <h3>Mobile Friendly</h3>
+
+          <p>
+            Designed for a smooth mobile experience.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download">
+
+      <div class="download-box">
+
+        <h2>Get Pixel Design</h2>
+
+        <p>
+          Download Pixel Design and start creating
+          beautiful designs.
+        </p>
+
+        <!-- Yahan apna actual download URL lagana -->
+        <a href="#" class="download-btn">
+          <i class="fa-solid fa-download"></i>
+          Download Now
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section id="screenshots">
+
+      <div class="section-title">
+        <h2>Screenshots</h2>
+        <p>See Pixel Design in action.</p>
+      </div>
+
+      <div class="screenshots">
+
+        <div class="screenshot">
+          <img src="images/20260914_163253.jpg" alt="Pixel Design screenshot">
+        </div>
+
+        <div class="screenshot">
+          <img src="images/IMG_20260911_092550.jpg" alt="Pixel Design screenshot">
+        </div>
+
+        <div class="screenshot">
+          <img src="images/IMG_20260911_092604.jpg" alt="Pixel Design screenshot">
+        </div>
+
+        <div class="screenshot">
+          <img src="images/IMG_20260911_092620.jpg" alt="Pixel Design screenshot">
+        </div>
+
+        <div class="screenshot">
+          <img src="images/IMG_20260911_092632.jpg" alt="Pixel Design screenshot">
+        </div>
+
+        <div class="screenshot">
+          <img src="images/IMG_20260911_092643.jpg" alt="Pixel Design screenshot">
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+
+      <div class="section-title">
+        <h2>FAQ</h2>
+        <p>Frequently asked questions.</p>
+      </div>
+
+      <div class="faq">
+
+        <div class="faq-item">
+
+          <button class="faq-question">
+            What is Pixel Design?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+
+          <div class="faq-answer">
+            Pixel Design is a creative design application
+            for making posters, graphics and social media designs.
+          </div>
+
+        </div>
+
+        <div class="faq-item">
+
+          <button class="faq-question">
+            Where can I download the app?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+
+          <div class="faq-answer">
+            The app can be downloaded from the supported
+            app stores and the official download link.
+          </div>
+
+        </div>
+
+        <div class="faq-item">
+
+          <button class="faq-question">
+            Is Pixel Design available on mobile?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+
+          <div class="faq-answer">
+            Yes. Pixel Design is designed for Android devices.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal" id="contactModal">
+
+    <div class="modal-box">
+
+      <button class="modal-close" onclick="closeModal('contactModal')">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2>Contact Us</h2>
+
+      <p>
+        If you have any questions, suggestions or support
+        requests, contact us by email.
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:rkdesigner9644@gmail.com">
+          rkdesigner9644@gmail.com
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- PRIVACY MODAL -->
+  <div class="modal" id="privacyModal">
+
+    <div class="modal-box">
+
+      <button class="modal-close" onclick="closeModal('privacyModal')">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2>Privacy Policy</h2>
+
+      <p>
+        Read the complete Pixel Design privacy policy
+        on our official privacy policy page.
+      </p>
+
+      <a
+        href="https://sites.google.com/view/pixeldesign-privacy/home"
+        target="_blank"
+        rel="noopener"
+        class="primary-btn"
+      >
+        <i class="fa-solid fa-shield-halved"></i>
+        Open Privacy Policy
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- LAYERS MODAL -->
+  <div class="modal" id="layersModal">
+
+    <div class="modal-box">
+
+      <button class="modal-close" onclick="closeModal('layersModal')">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2>Layers</h2>
+
+      <p>
+        Pixel Design supports multiple design layers.
+      </p>
+
+      <div class="layer-list">
+
+        <div class="layer-item">
+          <i class="fa-solid fa-square"></i>
+          Background
+        </div>
+
+        <div class="layer-item">
+          <i class="fa-solid fa-image"></i>
+          Image
+        </div>
+
+        <div class="layer-item">
+          <i class="fa-solid fa-font"></i>
+          Text
+        </div>
+
+        <div class="layer-item">
+          <i class="fa-solid fa-shapes"></i>
+          Shapes
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="logo" style="color:white;">
+      Pixel Design
+    </div>
+
+    <div class="social">
+
+      <a
+        href="https://www.facebook.com/share/1DYMwFTN1L/"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+
+      <a href="#" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+
+      <a href="#" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Pixel Design. All rights reserved.
+    </div>
+
+  </footer>
+
+  <script>
+
+    /* SIDEBAR */
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const openSidebarBtn = document.getElementById("openSidebar");
+    const closeSidebarBtn = document.getElementById("closeSidebar");
+
+    openSidebarBtn.addEventListener("click", () => {
+      sidebar.classList.add("open");
+      overlay.classList.add("show");
+    });
+
+    closeSidebarBtn.addEventListener("click", closeSidebar);
+
+    overlay.addEventListener("click", closeSidebar);
+
+    function closeSidebar() {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
+    }
+
+    function goTo(id) {
+      closeSidebar();
+
+      setTimeout(() => {
+        const element = document.getElementById(id);
+
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      }, 150);
+    }
+
+
+    /* MODALS */
+    function openModal(id) {
+      closeSidebar();
+
+      const modal = document.getElementById(id);
+
+      if (modal) {
+        modal.classList.add("show");
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+
+      if (modal) {
+        modal.classList.remove("show");
+      }
+    }
+
+    document.querySelectorAll(".modal").forEach(modal => {
+
+      modal.addEventListener("click", function(e) {
+
+        if (e.target === modal) {
+          modal.classList.remove("show");
+        }
+
+      });
+
+    });
+
+
+    /* FAQ */
+    document.querySelectorAll(".faq-question").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const item = button.parentElement;
+
+        item.classList.toggle("active");
+
+        const icon = button.querySelector("i");
+
+        if (item.classList.contains("active")) {
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-up");
+        } else {
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        }
+
+      });
+
+    });
+
+
+    /* CALENDAR */
+    let currentDate = new Date();
+
+    function renderCalendar() {
+
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+
+      const monthYear = document.getElementById("monthYear");
+      const calendarDays = document.getElementById("calendarDays");
+
+      const monthName = new Intl.DateTimeFormat("en-US", {
+        month: "long"
+      }).format(currentDate);
+
+      monthYear.textContent = `${monthName} ${year}`;
+
+      calendarDays.innerHTML = "";
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const totalDays = new Date(year, month + 1, 0).getDate();
+
+      const today = new Date();
+
+      for (let i = 0; i < firstDay; i++) {
+
+        const empty = document.createElement("div");
+        calendarDays.appendChild(empty);
+
+      }
+
+      for (let day = 1; day <= totalDays; day++) {
+
+        const dayElement = document.createElement("div");
+
+        dayElement.textContent = day;
+
+        if (
+          day === today.getDate() &&
+          month === today.getMonth() &&
+          year === today.getFullYear()
+        ) {
+          dayElement.classList.add("today");
+        }
+
+        calendarDays.appendChild(dayElement);
+
+      }
+
+    }
+
+    function changeMonth(amount) {
+
+      currentDate.setMonth(
+        currentDate.getMonth() + amount
+      );
+
+      renderCalendar();
+
+    }
+
+    renderCalendar();
+
+  </script>
+
+</body>
+</html>
